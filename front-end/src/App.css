@@ -26,6 +26,54 @@
   color: #61dafb;
 }
 
+.nav-ul li a {
+  color: white;
+    padding: 5px;
+    text-decoration: none;
+    font-size: 25px;
+}
+
+.nav-ul {
+  padding: 5px;
+  margin: 0;
+  background-color: #61dafb;
+ 
+}
+
+.footer
+  {
+    position: absolute;
+    bottom: 0;
+    text-align: center;
+    width: 100%;
+    background-color: skyblue;
+}
+
+.register  {
+  margin-left: 30%;
+}
+
+.inputBox{
+  
+  display: block;
+  padding: 7px;
+  margin: 25px;
+  width: 300px;
+  border: 1px solid skyblue;
+}
+
+.appbutton{
+  
+    margin: 25px;
+    padding: 10px;
+    width: 150px;
+    background-color: skyblue;
+    border: 1px solid black;
+    cursor: pointer;
+
+}
+
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
