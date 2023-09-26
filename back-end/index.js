@@ -8,22 +8,29 @@ app.use(express.json())
 app.use(cors())
 app.post('/register',async (req,resp)=>{
     const user=new User(req.body);
-    const result= await user.save()
+    let result= await user.save()
+    result=result.toObject()
+    delete result.password
     resp.send(result)
 })
-// const connectDB=async ()=>{
-//     try{
-//     mongoose.connect('mongodb://127.0.0.1:27017/e-comm',{useNewUrlParser:true})
-//     const productSchema=new mongoose.Schema({})
-//     const product = mongoose.model('products',productSchema)
-//     const data=await product.find()
-//     console.warn(data)
-//     }
-//     catch(e){
-//         console.log("error occured",e);
-//     }
-// }
-// connectDB()
+
+app.post('/login', async (req,resp)=>{
+
+    if(req.body.password && req.body.email){
+        let user=await User.findOne(req.body).select('-password')
+        if(user){
+            resp.send(user)
+        }
+        else{
+            resp.send({result:"no user found"})
+        }
+    }
+    else{
+        resp.send({result:"no user found"})
+    }
+   
+    
+})
 
 app.listen(5000,()=>{
     console.log("running on port 5000");
