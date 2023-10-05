@@ -51,6 +51,24 @@ app.delete("/product/:id", async (req, resp) => {
   resp.send(result);
 });
 
+app.get("/product/:id",async (req,resp)=>{
+  try{
+    let result = await Product.findOne({_id : req.params.id});
+    resp.send(result);
+  }
+ catch(e){
+  resp.send({result:"no record found"})
+ }
+ 
+})
+
+app.put("/product/:id",async (req,resp)=>{
+const result =await Product.updateOne(
+  {_id:req.params.id},
+  {$set:req.body})
+  resp.send(result)
+})
+
 app.listen(5000, () => {
   console.log("running on port 5000");
 });
